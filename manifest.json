@@ -1,0 +1,27 @@
+{
+	"name": "Stop AutoRefresh",
+	"version": "1.2.1",
+	"manifest_version": 2,
+	"description": "Stop pages' auto refresh with http-equiv + refresh meta tags",
+	"icons": { "128": "stop_refresh_128.png",
+				"48": "stop_refresh_48.png"},
+	"background": { "scripts": ["background.js"] },
+	"page_action": {
+	  "default_title": "Stop Auto Refresh",
+	  "default_icon": "stop_refresh_19.png",
+	  "default_popup": "stopautorefresh.html"
+	},
+	"content_scripts": [
+	{
+	  "matches": ["*://*/*", "https://*/*"],
+	  "js": ["stopautorefresh.js"],
+	  "run_at": "document_end",
+	  "all_frames": true
+	}
+	],
+	"permissions": [
+		"tabs", "webRequest", "webRequestBlocking", "webNavigation",
+		"*://*/*"
+	]
+
+}
